@@ -106,7 +106,7 @@ const App = () => {
             <div key={index} className="m-2 flex gap-4">
               <div>
                 <p>学習内容：{record.title}</p>
-                <p>学習時間：{record.time}(h)</p>
+                <p className="text-gray-500">学習時間：{record.time}(h)</p>
               </div>
               <div>
                 <button
