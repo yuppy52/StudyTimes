@@ -118,7 +118,7 @@ const App = () => {
 
           {haveError && (
             <div className="bg-red-50 border border-red-200 rounded-lg p-3 mb-4 text-red-700 text-sm">
-              ⚠️ 登録されていない項目があります
+              登録されていない項目があります
             </div>
           )}
 
