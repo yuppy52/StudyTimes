@@ -60,7 +60,8 @@ const App = () => {
   };
 
   return (
-    <div>
+    <div className="p-4">
+      <h1 className="text-2xl font-bold mb-4">学習記録</h1>
       <div>
         {isLoading && <p>読み込み中...</p>}
         {isError && <p>エラー: {error.message}</p>}
