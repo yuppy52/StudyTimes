@@ -18,14 +18,23 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      # 2. アプリのビルド（ここへ環境変数を追加！）
+      # 2. ここにCI（自動テスト）を追加！
+      - name: Run Tests
+        env:
+          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
+        run: npm run test -- --watch=false # 1回だけ実行して終了するモードで動かす
+
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+
+      # 3. アプリのビルド（ここへ環境変数を追加！）
       - name: Build Application
         env:
           VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
           VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
         run: npm run build
 
-      # 3. Firebase Hostingへのプレビューデプロイ
+      # 4. Firebase Hostingへのプレビューデプロイ
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
