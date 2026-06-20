@@ -28,7 +28,7 @@ const App = () => {
     records?.reduce((sum, record) => sum + Number(record.time), 0) ?? 0;
 
   const onClickRegisterButton = async () => {
-    if (inputText === "" || inputTime <= 0) {
+    if (!inputText || inputTime <= 0) {
       sethaveError(true);
       return;
     }
@@ -111,7 +111,7 @@ const App = () => {
               placeholder="0"
               value={inputTime}
               onChange={(e) => {
-                setInputTime(e.target.value);
+                setInputTime(Number(e.target.value));
               }}
             />
           </div>
